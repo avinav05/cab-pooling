@@ -1,5 +1,5 @@
 # vendor-shopee
-Co-founder: 
-Priyam Gupta
-Harsh Gupta
+### Co-founder: 
+Priyam Gupta,
+Harsh Gupta and
 Avinav Gupta
