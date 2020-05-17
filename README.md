@@ -1,6 +1,6 @@
 # CircleCI Demo React JS App
 
-[![CircleCI](https://circleci.com/gh/avinav05/cab-pooling.svg?style=svg)](https://circleci.com/gh/avinav05/cab-pooling)
+[![CircleCI](https://circleci.com/gh/avinav05/cab-pooling.svg?style=svg&circle-token=b773ca4cce9010fc40b352c59cb9a36e81134d85)](https://circleci.com/gh/avinav05/cab-pooling)
 
 ## Available Scripts
 
