@@ -2,6 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/avinav05/cab-pooling.svg?style=svg&circle-token=b773ca4cce9010fc40b352c59cb9a36e81134d85)](https://circleci.com/gh/avinav05/cab-pooling)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/020d6f29-151f-4e84-a00a-736a0357d3d8/deploy-status)](https://app.netlify.com/sites/determined-lalande-2fc1dd/deploys)
+
 ## Available Scripts
 
 In the project directory, you can run:
