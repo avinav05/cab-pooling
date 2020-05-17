@@ -28,8 +28,6 @@ jobs:
 
       - run: npm install
 
-      - run: npm run lint .
-
       - save_cache:
           paths:
             - node_modules
