@@ -4,6 +4,9 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/415fbfc9-83a9-47ba-a58e-236ebfd8e2a0/deploy-status)](https://app.netlify.com/sites/serene-tereshkova-64e436/deploys)
 
+## Link
+[https://serene-tereshkova-64e436.netlify.app/](https://serene-tereshkova-64e436.netlify.app/)
+
 ## Available Scripts
 
 In the project directory, you can run:
