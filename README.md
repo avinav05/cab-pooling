@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/avinav05/cab-pooling.svg?style=svg&circle-token=b773ca4cce9010fc40b352c59cb9a36e81134d85)](https://circleci.com/gh/avinav05/cab-pooling)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/020d6f29-151f-4e84-a00a-736a0357d3d8/deploy-status)](https://app.netlify.com/sites/determined-lalande-2fc1dd/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/415fbfc9-83a9-47ba-a58e-236ebfd8e2a0/deploy-status)](https://app.netlify.com/sites/serene-tereshkova-64e436/deploys)
 
 ## Available Scripts
 
