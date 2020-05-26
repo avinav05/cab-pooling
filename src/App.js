@@ -1,18 +1,59 @@
-import React from 'react';
-//import logo from './logo.svg';
-import './App.css';
+import React,{ useState} from "react";
+import { USER_EXISTS_QUERY } from "./graphql/queries";
+import { useClient } from "./client";
+import Swal from 'sweetalert2';
 
-function App() {
+
+const App=()=>{
+  const client = useClient();
+  const [email, setEmail] = useState('');
+
+  const viewUser =async e=>{
+    try{
+      e.preventDefault();
+      const emailck={email};
+      const response=await client.request(USER_EXISTS_QUERY, emailck);
+      if(response.userExists){
+        Swal.fire({
+          icon: 'success',
+          title: 'Great',
+          text: 'Thank You!',
+        });
+      }
+      else{
+        Swal.fire({
+          icon: 'error',
+          title: 'Opps...',
+          text: 'Please register with us!',
+        });
+
+      }
+      console.log({ response });
+    }
+    catch(err){
+      console.log(err);
+    }
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        
-        <p>
-          Hello Avinav !
-        </p>
-          Learn React
-      </header>
-    </div>
+    <form className="container" onSubmit={viewUser}>
+      <div className="form-group">
+        <label htmlFor="exampleInputEmail1">Email address</label>
+        <input
+          type="email"
+          className="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+        />
+        <small id="emailHelp" className="form-text text-muted" >
+          Check that you are registered with us or not!
+        </small>
+      </div>
+      <button type="submit" className="btn btn-primary">
+        Submit
+      </button>
+    </form>
   );
 }
 
