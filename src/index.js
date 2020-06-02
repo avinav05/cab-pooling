@@ -1,15 +1,80 @@
-import React from 'react';
+import React,{Suspense} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
+import ApolloClient from "apollo-client";
+import { WebSocketLink } from 'apollo-link-ws';
+import { split } from 'apollo-link';
+import { HttpLink } from 'apollo-link-http';
+import { getMainDefinition } from 'apollo-utilities';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+const Chat = React.lazy(() => import('./pages/chat'));
+const App = React.lazy(() => import('./App'));
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+const httpLink = new HttpLink({
+  uri: "http://localhost:5000/", // use https for secure endpoint
+});
+
+// Create a WebSocket link:
+const wsLink = new WebSocketLink({
+  uri: "ws://localhost:5000/", // use wss for a secure endpoint
+  options: {
+    reconnect: true
+  }
+});
+
+// using the ability to split links, you can send data to each link
+// depending on what kind of operation is being sent
+const link = split(
+  // split based on operation type
+  ({ query }) => {
+    const { kind, operation } = getMainDefinition(query);
+    return kind === 'OperationDefinition' && operation === 'subscription';
+  },
+  wsLink,
+  httpLink,
 );
+
+// Instantiate client
+const client = new ApolloClient({
+  link,
+  cache: new InMemoryCache()
+})
+
+
+const Root=()=>{
+  return(
+    <Suspense fallback={<div>Loading... </div>}>
+    <Router>
+        <Switch>
+        <Route exact path="/" component={App} exact />
+        <Route path="/chat" component={Chat} />
+        <Route component={Error}></Route>
+        </Switch>
+    </Router>
+    </Suspense>
+    
+  );
+}
+ReactDOM.render(
+  <Router>
+      <Root />
+  </Router>, 
+  document.getElementById('root')
+)
+
+
+
+
+
+
+
+
+
+
 serviceWorker.register();
+
+
