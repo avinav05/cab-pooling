@@ -25,7 +25,7 @@ const httpLink = new HttpLink({
 
 // Create a WebSocket link:
 const wsLink = new WebSocketLink({
-  uri: "ws://cabpoolserver.herokuapp.com/graphql", // use wss for a secure endpoint
+  uri: "wss://cabpoolserver.herokuapp.com/graphql", // use wss for a secure endpoint
   options: {
     reconnect: true,
   },
