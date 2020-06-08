@@ -9,18 +9,23 @@ import { split } from "apollo-link";
 import { HttpLink } from "apollo-link-http";
 import { getMainDefinition } from "apollo-utilities";
 import { InMemoryCache } from "apollo-cache-inmemory";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  withRouter,
+} from "react-router-dom";
 import { ApolloProvider } from "@apollo/react-hooks";
 const Chat = React.lazy(() => import("./pages/chat"));
 const App = React.lazy(() => import("./App"));
 
 const httpLink = new HttpLink({
-  uri: "http://localhost:5000/", // use https for secure endpoint
+  uri: "https://cabpoolserver.herokuapp.com/", // use https for secure endpoint
 });
 
 // Create a WebSocket link:
 const wsLink = new WebSocketLink({
-  uri: "ws://localhost:5000/graphql", // use wss for a secure endpoint
+  uri: "ws://cabpoolserver.herokuapp.com/", // use wss for a secure endpoint
   options: {
     reconnect: true,
   },
@@ -49,8 +54,8 @@ const Root = () => {
     <Suspense fallback={<div>Loading... </div>}>
       <Router>
         <Switch>
-          <Route exact path="/" component={App} exact />
-          <Route path="/chat" component={Chat} />
+          <Route exact path="/" component={withRouter(App)} />
+          <Route path="/chat/:id" component={withRouter(Chat)} />
           <Route component={Error}></Route>
         </Switch>
       </Router>
