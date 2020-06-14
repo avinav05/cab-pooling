@@ -16,8 +16,9 @@ import {
   withRouter,
 } from "react-router-dom";
 import { ApolloProvider } from "@apollo/react-hooks";
-const Chat = React.lazy(() => import("./pages/chat"));
 const App = React.lazy(() => import("./App"));
+const Chat = React.lazy(() => import("./pages/chat"));
+const Auth = React.lazy(() => import("./pages/Auth"));
 
 const httpLink = new HttpLink({
   uri: "https://cabpoolserver.herokuapp.com/", // use https for secure endpoint
@@ -56,6 +57,14 @@ const Root = () => {
         <Switch>
           <Route exact path="/" component={withRouter(App)} />
           <Route path="/chat/:id" component={withRouter(Chat)} />
+          <Route path="/auth" component={withRouter(Auth)} />
+
+          {/* When logout is needed uncomment the below line */}
+          {/* <Route
+            path="/logout"
+            render={(rProps) => <Auth {...rProps} defaultRoutine="logout" />}
+          /> */}
+
           <Route component={Error}></Route>
         </Switch>
       </Router>
