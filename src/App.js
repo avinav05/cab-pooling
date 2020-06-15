@@ -73,8 +73,11 @@ const App = () => {
         Submit
       </button>
     </form> */
+
+
+    
     <Container maxWidth="sm">
-      <center
+      {/* <center
         style={{
           margin: "auto",
           position: "absolute",
@@ -107,7 +110,7 @@ const App = () => {
             </div>
           </CardContent>
         </Card>
-      </center>
+      </center> */}
     </Container>
   );
 };
